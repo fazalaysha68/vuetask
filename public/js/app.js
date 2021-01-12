@@ -2146,6 +2146,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "app",
@@ -2185,7 +2186,10 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/api/register', this.form).then(function () {
         console.log('saved');
-        document.querySelector(".text-red-500").style.display = "none";
+        document.querySelector(".text-red-500.name").style.display = "none";
+        document.querySelector(".text-red-500.email").style.display = "none";
+        document.querySelector(".text-red-500.password").style.display = "none";
+        document.querySelector(".text-red-500.confirmpassword").style.display = "none";
         document.querySelector(".text-green-500").style.display = "block";
       })["catch"](function (error) {
         _this.errors = error.response.data.errors;
@@ -20783,7 +20787,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _vm.errors.name
-            ? _c("span", { staticClass: "w-full text-red-500" }, [
+            ? _c("span", { staticClass: "w-full text-red-500 name" }, [
                 _vm._v(_vm._s(_vm.errors.name[0]))
               ])
             : _vm._e(),
@@ -20816,7 +20820,7 @@ var render = function() {
           _c("label", { attrs: { for: "email" } }, [_vm._v("Your e-mail")]),
           _vm._v(" "),
           _vm.errors.email
-            ? _c("span", { staticClass: "w-full text-red-500" }, [
+            ? _c("span", { staticClass: "w-full text-red-500 email" }, [
                 _vm._v(_vm._s(_vm.errors.email))
               ])
             : _vm._e(),
@@ -20849,7 +20853,7 @@ var render = function() {
           _c("label", { attrs: { for: "password" } }, [_vm._v("Password")]),
           _vm._v(" "),
           _vm.errors.password
-            ? _c("span", { staticClass: "w-full text-red-500" }, [
+            ? _c("span", { staticClass: "w-full text-red-500 password" }, [
                 _vm._v(_vm._s(_vm.errors.password))
               ])
             : _vm._e(),
@@ -20888,9 +20892,11 @@ var render = function() {
           ]),
           _vm._v(" "),
           _vm.errors.password_confirmation
-            ? _c("span", { staticClass: "w-full text-red-500" }, [
-                _vm._v(_vm._s(_vm.errors.password_confirmation))
-              ])
+            ? _c(
+                "span",
+                { staticClass: "w-full text-red-500 confirmpassword" },
+                [_vm._v(_vm._s(_vm.errors.password_confirmation))]
+              )
             : _vm._e(),
           _vm._v(" "),
           _c("input", {

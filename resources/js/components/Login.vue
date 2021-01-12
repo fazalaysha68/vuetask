@@ -1,3 +1,12 @@
+<style>
+    span.w-full.text-red-500 {
+        background-color: #dc3545!important;
+        color: white;
+        display: inline-flex;
+    }
+
+
+</style>
 <template>
      <div class="flex flex-wrap w-full justify-center items-center pt-56">
         <div class="flex flex-wrap max-w-xl">

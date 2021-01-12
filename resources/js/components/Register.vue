@@ -19,26 +19,27 @@ span.w-full.text-green-500 {
       
       <div class="flex flex-wrap w-full justify-center items-center pt-56">
         <div class="flex flex-wrap max-w-xl">
+            
             <span class="w-full text-green-500"> You have registered successfully. </span>
             <div class="p-2 text-2xl text-gray-800 font-semibold"><h1>Register an account</h1></div>
             <div class="p-2 w-full">
                 <label class="w-full" for="name">Name</label>
-                <span class="w-full text-red-500" v-if="errors.name">{{errors.name[0]}}</span>
+                <span class="w-full text-red-500 name" v-if="errors.name">{{errors.name[0]}}</span>
                 <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Name" type="text" v-model="form.name" >
             </div>
             <div class="p-2 w-full">
                 <label for="email">Your e-mail</label>
-                <span class="w-full text-red-500" v-if="errors.email">{{errors.email}}</span>
+                <span class="w-full text-red-500 email" v-if="errors.email">{{errors.email}}</span>
                 <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Email" type="email" v-model="form.email">
             </div>
             <div class="p-2 w-full">
                 <label for="password">Password</label>
-                <span class="w-full text-red-500" v-if="errors.password">{{errors.password}}</span>
+                <span class="w-full text-red-500 password" v-if="errors.password">{{errors.password}}</span>
                 <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Password" type="password" v-model="form.password" name="password">
             </div>
             <div class="p-2 w-full">
                 <label for="confirm_password">Confirm Password</label>
-                <span class="w-full text-red-500" v-if="errors.password_confirmation">{{errors.password_confirmation}}</span>
+                <span class="w-full text-red-500 confirmpassword" v-if="errors.password_confirmation">{{errors.password_confirmation}}</span>
                 <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Confirm Password" type="password" v-model="form.password_confirmation" name="password_confirmation">
             </div>
             <div class="p-2 w-full mt-4">
@@ -77,7 +78,10 @@ export default {
         saveForm(){
             axios.post('/api/register', this.form).then(() =>{
                 console.log('saved');
-                document.querySelector(".text-red-500").style.display = "none";
+                document.querySelector(".text-red-500.name").style.display = "none";
+                document.querySelector(".text-red-500.email").style.display = "none";
+                document.querySelector(".text-red-500.password").style.display = "none";
+                document.querySelector(".text-red-500.confirmpassword").style.display = "none";
                 document.querySelector(".text-green-500").style.display = "block";
                 
             }).catch((error) =>{
