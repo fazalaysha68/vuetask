@@ -36,13 +36,13 @@ export default{
             path: "/dashboard",
             name: "Dashboard",
             component: Dashboard,
-           beforeEach: (to, form, next) =>{
+            beforeEach: (to, form, next) =>{
                axios.get('/api/athenticated').then(()=>{
                    next()
                }).catch(()=>{
                    return next({ name: 'Login'})
                })
-           }
+            }
 
           }
 
