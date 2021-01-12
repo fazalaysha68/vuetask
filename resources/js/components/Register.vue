@@ -77,8 +77,8 @@ export default {
         saveForm(){
             axios.post('/api/register', this.form).then(() =>{
                 console.log('saved');
-                $('.w-full.text-red-500').css('display','none');
-                $('.w-full.text-green-500').css('display','block');
+                document.querySelector(".text-red-500").style.display = "none";
+                document.querySelector(".text-green-500").style.display = "block";
                 
             }).catch((error) =>{
                 this.errors = error.response.data.errors;
