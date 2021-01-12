@@ -18,6 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+            .flex.bg-gray-100.border-b.border-gray-300.py-4 {
+                background-color: #41228e;
+                color: white;
+            }
+
+    </style>
 </head>
 <body>
     <div id="app">

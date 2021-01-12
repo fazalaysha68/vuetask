@@ -1,6 +1,25 @@
+<style >
+span.w-full.text-red-500 {
+    background-color: #dc3545!important;
+    color: white;
+    display: inline-flex;
+}
+span.w-full.text-green-500 {
+    background-color: #28a745!important;
+    color: white;
+    padding: 20px;
+}
+.w-full .text-green-500{
+    display:none;
+}
+
+
+</style>
 <template>
+      
       <div class="flex flex-wrap w-full justify-center items-center pt-56">
         <div class="flex flex-wrap max-w-xl">
+            <span class="w-full text-green-500"> You have registered successfully. </span>
             <div class="p-2 text-2xl text-gray-800 font-semibold"><h1>Register an account</h1></div>
             <div class="p-2 w-full">
                 <label class="w-full" for="name">Name</label>
@@ -22,13 +41,6 @@
                 <span class="w-full text-red-500" v-if="errors.password_confirmation">{{errors.password_confirmation}}</span>
                 <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Confirm Password" type="password" v-model="form.password_confirmation" name="password_confirmation">
             </div>
-            <div class="p-2 w-full">
-                <label>
-                    <input type="radio" class="form-control" name="gender" value="male" v-model="form.gender" />
-                    Male
-                </label>
-                <span class="w-full text-red-500" v-if="errors.gender">{{ errors.gender }}</span>
-            </div>   
             <div class="p-2 w-full mt-4">
                 <button @click.prevent="saveForm" type="submit" class="flex text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Register</button>
             </div>
@@ -47,8 +59,6 @@ export default {
                 email: '',
                 password:'',
                 password_confirmation:'',
-                gender: ''
-                
             },
             errors:[]
         }
@@ -59,7 +69,7 @@ export default {
                 email: { required, email },
                 password: { required, minLength: minLength(6) },
                 password_confirmation: { required, sameAsPassword: sameAs('password') },
-                gender: { required },
+                
                 
             }
         },
@@ -67,6 +77,9 @@ export default {
         saveForm(){
             axios.post('/api/register', this.form).then(() =>{
                 console.log('saved');
+                $('.w-full.text-red-500').css('display','none');
+                $('.w-full.text-green-500').css('display','block');
+                
             }).catch((error) =>{
                 this.errors = error.response.data.errors;
             })
