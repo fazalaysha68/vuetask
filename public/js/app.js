@@ -2185,8 +2185,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/api/register', this.form).then(function () {
         console.log('saved');
-        $('.w-full.text-red-500').css('display', 'none');
-        $('.w-full.text-green-500').css('display', 'block');
+        document.querySelector(".text-red-500").style.display = "none";
+        document.querySelector(".text-green-500").style.display = "block";
       })["catch"](function (error) {
         _this.errors = error.response.data.errors;
       });
